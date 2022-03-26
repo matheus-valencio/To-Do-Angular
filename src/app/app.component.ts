@@ -17,7 +17,6 @@ export class AppComponent {
   pushLista() {
     this.lista.push(this.item);
     localStorage.setItem('tarefa', JSON.stringify(this.lista));
-    console.log(localStorage.getItem('tarefa'));
   }
 
   getLista() {
