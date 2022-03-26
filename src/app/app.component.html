@@ -1,4 +1,18 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<h1>To-do List</h1>
+<div>Tarefa</div>
+<input type="text" [(ngModel)]="item" />
+<button (click)="pushLista()">Adicionar</button>
+
+<h3>Lista:</h3>
+
+<table class="table">
+  <tr>
+    <th>Tarefa</th>
+    <th>Concluida</th>
+  </tr>
+  <tr *ngFor="let item of getLista(); index as i">
+    <td>{{ item }}</td>
+    <td><button (click)="getLista()">Concluida</button></td>
+  </tr>
+</table>
+<button (click)="getLista()">Concluida</button>
