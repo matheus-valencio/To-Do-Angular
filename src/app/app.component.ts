@@ -21,28 +21,29 @@ export class AppComponent {
   }
 
   getLista() {
-    return Array.from(
-      localStorage
-        .getItem('tarefa')
-        .replace(/"/g, '')
-        .replace('[', '')
-        .replace(']', '')
-        .split(',')
-    );
+    if (localStorage.getItem('tarefa') == '[]') {
+    } else {
+      this.lista = Array.from(
+        localStorage
+          .getItem('tarefa')
+          .replace(/"/g, '')
+          .replace('[', '')
+          .replace(']', '')
+          .split(',')
+      );
+      return Array.from(
+        localStorage
+          .getItem('tarefa')
+          .replace(/"/g, '')
+          .replace('[', '')
+          .replace(']', '')
+          .split(',')
+      );
+    }
   }
 
   popLista(i) {
-    localStorage.removeItem(i);
-  }
-
-  allStorage() {
-    var values = [],
-      keys = 'tarefa',
-      i = keys.length;
-
-    while (i--) {
-      values.push(localStorage.getItem(keys[i]));
-    }
-    return values;
+    this.lista.splice(i, 1);
+    localStorage.setItem('tarefa', JSON.stringify(this.lista));
   }
 }
